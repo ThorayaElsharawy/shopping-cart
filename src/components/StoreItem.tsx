@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ShoppingCartContext } from "../context/ShoppingCartContext";
 import { FormateCurrency } from "../utilities/FormateCurrency";
 
 type StoreItemProps = {
@@ -11,9 +12,14 @@ type StoreItemProps = {
 };
 
 export function StoreItem({ item }: StoreItemProps) {
-    const [quantity, setQuantity] = useState(0)
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useContext(ShoppingCartContext);
 
-  console.log(quantity);
+  const quantity = getItemQuantity(item.id);
 
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -35,10 +41,10 @@ export function StoreItem({ item }: StoreItemProps) {
 
         {quantity == 0 ? (
           <button
-            onClick={() => setQuantity(1)}
+          onClick={() => increaseCartQuantity(item.id)}
             className="mt-3 mx-auto w-full  text-white border bg-blue-700 
                 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg 
-                text-sm px-5 py-2.5 text-center "
+                text-sm px-5 py-2.5 text-center  transition-all duration-300"
           >
             Add to cart
           </button>
@@ -46,24 +52,25 @@ export function StoreItem({ item }: StoreItemProps) {
           <div className="mt-3 flex items-center justify-between">
             <div className="flex">
               <button
+                onClick={() => decreaseCartQuantity(item.id)}
                 className="flex justify-center bg-blue-700 w-10 text-white rounded text-lg focus:ring-4 focus:ring-blue-300"
-              >
-                +
-              </button>
-              <p className="mx-2">
-                <span className="font-extrabold px-1 text-xl">7</span>
-                in cart
-              </p>
-              <button
-                className="flex justify-center bg-blue-700 w-10 text-white rounded text-xl focus:ring-4 focus:ring-blue-300"
               >
                 -
               </button>
+              <p className="mx-2">
+                <span className="font-extrabold px-1 text-xl">{quantity}</span>
+                in cart
+              </p>
+              <button
+                onClick={() => increaseCartQuantity(item.id)}
+                className="flex justify-center bg-blue-700 w-10 text-white rounded text-xl focus:ring-4 focus:ring-blue-300"
+              >
+                +
+              </button>
             </div>
-            <button
-            onClick={() => setQuantity(0)}
-              className="text-red-700 border border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-            >
+            <button 
+            onClick={() => removeFromCart(item.id)}
+            className="text-red-700 border border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
               Remove
             </button>
           </div>
