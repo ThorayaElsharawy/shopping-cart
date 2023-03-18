@@ -3,25 +3,28 @@
     "id": 1,
     "name": "car1",
     "price": 4.5,
-    "imgUrl": "/images/img1.jpg"
+    "imgUrl": "/images/img1.jpg",
+    "color": "Gray"
   },
   {
     "id": 2,
     "name": "car2",
     "price": 2,
-    "imgUrl": "/images/img2.jpg"
+    "imgUrl": "/images/img2.jpg",
+    "color": "Yellow"
   },
   {
     "id": 3,
     "name": "car3",
     "price": 5,
-    "imgUrl": "/images/img5.jpg"
-
+    "imgUrl": "/images/img5.jpg",
+    "color": "Red"
   },
   {
     "id": 4,
     "name": "car4",
     "price": 3,
-    "imgUrl": "/images/img4.jpg"
+    "imgUrl": "/images/img4.jpg",
+    "color": "White"
   }
 ]

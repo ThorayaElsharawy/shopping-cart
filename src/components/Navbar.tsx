@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCartContext } from "../context/ShoppingCartContext";
+import { ShoppingCart } from "./ShoppingCart";
 
 export function Navbar() {
   const {openCart, cartQuantity} = useContext(ShoppingCartContext)
