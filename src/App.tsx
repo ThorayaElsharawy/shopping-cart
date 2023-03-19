@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { ShoppingCart } from "./components/ShoppingCart";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import { About } from "./pages/About";
 import { Home } from "./pages/Home";

@@ -14,6 +14,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartprops) {
     const item = items.find((i) => i.id === cartItem.id);
     return total + (item?.price || 0) * cartItem.quantity;
   }, 0);
+  
   return (
     <>
       {isOpen && (
@@ -59,20 +60,27 @@ export function ShoppingCart({ isOpen }: ShoppingCartprops) {
                         className="text-base font-semibold leading-6 text-gray-900"
                         id="slide-over-title"
                       >
-                        Cart
+                        Shopping cart
                       </h2>
                     </div>
                     <div className="relative mt-6 flex-1 px-4 sm:px-6">
                       {cartItems.map((item) => (
                         <ul
-                        key={item.id}
-                        role="list"
-                        className="-my-6 divide-y divide-gray-200"
-                      >
-                        <CartItem {...item} />
-                      </ul>
+                          key={item.id}
+                          role="list"
+                          className="-my-6 divide-y divide-gray-200"
+                        >
+                          <CartItem {...item} />
+                        </ul>
                       ))}
-                       <div className=" text-xl mt-5 float-right">Total: {FormateCurrency(totalQuantity)}</div>
+                      <div className=" mt-10 text-xl flex justify-between items-center">
+                        <p>Subtotal</p>
+                        <p>{FormateCurrency(totalQuantity)}</p>
+                      </div>
+                      <span className="text-gray-600">Shipping and taxes calculated at checkout.</span>
+                      <div className="w-full ">
+                      <button className="bg-blue-700 text-white w-full py-2 rounded mt-4">Checkout</button>
+                      </div>
                     </div>
                    
                   </div>

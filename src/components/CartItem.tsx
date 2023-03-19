@@ -12,8 +12,7 @@ export function CartItem({ id, quantity }: CartItemProps) {
   const { removeFromCart } = useContext(ShoppingCartContext);
   const item = items.find((i) => i.id === id);
   if (item == null) return null;
-  console.log(item);
-
+  
   return (
     <li className="flex py-6 border-b mb-5">
       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
